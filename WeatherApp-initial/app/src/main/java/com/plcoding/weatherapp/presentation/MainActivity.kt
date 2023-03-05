@@ -55,7 +55,7 @@ class MainActivity : ComponentActivity() {
                         Spacer(modifier = Modifier.height(16.dp))
                         WeatherForecast(state = viewModel.state)
                     }
-                    if(viewModel.state.isLoading) {
+                    if(viewModel.state.isLoading == true) {
                         CircularProgressIndicator(
                             modifier = Modifier.align(Alignment.Center)
                         )
