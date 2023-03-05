@@ -3,6 +3,7 @@ package com.plcoding.weatherapp.domain.weather
 import androidx.annotation.DrawableRes
 import com.plcoding.weatherapp.R
 
+//Readable names to understand the type of the current Weather
 sealed class WeatherType(
     val weatherDesc: String,
     @DrawableRes val iconRes: Int
