@@ -11,7 +11,7 @@ I still didn't get all the concept of clean code and Kotlin's architecture but I
 ![img.png](img.png)
 
 ## What can I do to had more challenge to this project
-- Add an something that can let me change the location.
+- Add something that can let me change the location.
 - Add more variables in the api call to get more information about the weather.
 - Maybe change the UI with something I chose or made.
 - For the weekly weather, things like chart to make it more readable.
