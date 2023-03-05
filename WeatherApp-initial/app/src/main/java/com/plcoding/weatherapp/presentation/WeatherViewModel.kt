@@ -8,15 +8,16 @@ import androidx.lifecycle.viewModelScope
 import com.plcoding.weatherapp.domain.location.LocationTracker
 import com.plcoding.weatherapp.domain.repository.WeatherRepository
 import com.plcoding.weatherapp.domain.util.Resource
-import dagger.hilt.android.HiltAndroidApp
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltAndroidApp
+@HiltViewModel
 class WeatherViewModel @Inject constructor(
     private val repository: WeatherRepository,
     private val locationTracker: LocationTracker
 ): ViewModel() {
+
     var state by mutableStateOf(WeatherState())
         private set
 
@@ -26,7 +27,6 @@ class WeatherViewModel @Inject constructor(
                 isLoading = true,
                 error = null
             )
-            //This is an error gestion when we call our api to get the informations
             locationTracker.getCurrentLocation()?.let { location ->
                 when(val result = repository.getWeatherData(location.latitude, location.longitude)) {
                     is Resource.Success -> {
@@ -47,7 +47,7 @@ class WeatherViewModel @Inject constructor(
             } ?: kotlin.run {
                 state = state.copy(
                     isLoading = false,
-                    error = "Couldn't retrieve location. Make sure to grant location and enable GPS."
+                    error = "Couldn't retrieve location. Make sure to grant permission and enable GPS."
                 )
             }
         }
